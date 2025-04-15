@@ -3,6 +3,8 @@
 // Selecting elements
 const score0EL = document.getElementById('score--0');
 const score1EL = document.getElementById('score--1');
+const current0 = document.getElementById('current--0');
+const current1 = document.getElementById('current--1');
 const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
@@ -13,6 +15,8 @@ score0EL.textContent = 0;
 score1EL.textContent = 0;
 diceEl.classList.add('hidden');
 
+let currentScore = 0;
+
 // Rolling dice functionality
 btnRoll.addEventListener('click', function () {
   // 1. Generating a random dice roll
@@ -21,5 +25,13 @@ btnRoll.addEventListener('click', function () {
   // 2. Display dice
   diceEl.classList.remove('hidden');
   diceEl.src = `images/dice-${dice}.png`;
-  // 3. Check for rolled 1: if true, switch to next player
+
+  // 3. Check for rolled 1: if true,
+  if (dice !== 1) {
+    // Add dice to current score
+    currentScore = currentScore + dice;
+    current0.textContent = currentScore; // CHANGE LATER
+  } else {
+    // switch to next player
+  }
 });
